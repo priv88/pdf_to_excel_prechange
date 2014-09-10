@@ -1,0 +1,15 @@
+body { padding-top: 70px;}
+
+.navbar { 
+	background-color: #0C49BF;
+	
+}
+
+.custom {
+	color: #F1ECDC;
+}
+
+.container {
+	border: 2px solid;
+	padding: 25px;
+}

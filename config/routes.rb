@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  root 'pdf_readers#welcome'
+  get 'pdf2excel' => 'pdf_readers#welcome'
+  post '/transform' => "pdf_readers#transform"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

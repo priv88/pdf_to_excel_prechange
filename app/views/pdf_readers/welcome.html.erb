@@ -1,0 +1,31 @@
+
+<div class="container">
+	<div class= "col-md-8 col-md-offset-2">
+		<div class= "col-md-offset-4">
+			<div><%=flash[:notice] %></div>
+			<strong>  
+			PDF2Excel Reader
+			</strong>
+		</div>	
+		<br>
+		<div class="form-group">
+		<%= form_tag transform_path, multipart: true do %>
+			<label> Upload File - PDF only </label> <%= file_field_tag :pdf_file %>
+			<br>
+			<label> Page Start </label> <%= number_field_tag :page_start, class: "form-control" %>
+			<label> Page End </label> <%= number_field_tag :page_end, :class => "btn btn-default" %>
+
+			<br> </br>
+			
+			<%= button_tag(type: "submit", class: "btn btn-primary") do %>
+				Submit
+			<% end %>
+		<%end %>
+		</div>
+		<div class= "row">
+			<strong style="color: #A70B32;">  
+			The quality of PDF files are not standardized, please review the excel output closely before use.
+			</strong>
+		</div>	
+	</div>
+</div>
