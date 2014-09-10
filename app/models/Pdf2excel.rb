@@ -43,12 +43,13 @@ class Pdf2excel
 
 	def transform_content
 		@info_content.each_with_index do |line, row_index| 
-			# binding.pry
+			binding.pry
 			line.each do |info|
 				# binding.pry
 				col_index = return_position(info.first)
 				col_index = 1 if col_index.nil?
 				info_str = info.last.strip! #takes away spaces to standardize patterns
+				info_str = info.last if info_str.nil?
 				if contains_words?(info_str) #check in order to prevent incorrect sanitization of dates 
 					# binding.pry
 					# puts info_str

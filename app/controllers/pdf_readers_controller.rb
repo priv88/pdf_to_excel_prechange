@@ -5,7 +5,6 @@ class PdfReadersController < ApplicationController
 	end
 
 	def download_excel
-		binding.pry
 		require 'open-uri'
 		file_path = "#{Rails.root}/PDF2EXCEL.xls"
 		send_file file_path, :filename => "PDF2EXCEL.xls", :disposition => 'attachment'	
@@ -25,17 +24,20 @@ class PdfReadersController < ApplicationController
 		# "#{Time.now.strftime("%m%d%Y %H%M")}"
 		wb_name = "PDF2EXCEL" + ".xls"
 		workbook = WriteExcel.new(wb_name)
+		# binding.pry
 		pages.each do |page|
 			file = Pdf2excel.new(pdf_file.path,page)
 			worksheet = workbook.add_worksheet
 			file.get_content
 			file.set_col_position
+			# binding.pry
 			file.transform_content
-
+			# binding.pry
 			index = 0
 			file.mod_content.each do |info|
 				worksheet.write_row(index, 0, info)
 			index += 1
+			# binding.pry
 			end
 			# file.transfer_to_excel
 		end	
