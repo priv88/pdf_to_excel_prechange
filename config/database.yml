@@ -10,8 +10,7 @@ development:
 	database: <%= File.basename(Rails.root) %>_development
 	pool: 5
 	host: localhost
-	username: 
-	password:
+
 test:
 	adapter: postgresql
 	encoding: unicode
