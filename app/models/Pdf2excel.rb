@@ -6,7 +6,7 @@ class Pdf2excel
 
 
 	def initialize(file,page)
-		options = {:y_precision =>5}
+		options = {:y_precision =>7}
 		@file = PDF::Reader::Turtletext.new(file, options)
 		@page = page
 	 #returns the precision required in y positions helps align text correctly which may visually appear on the same line but is off by a few pixels
@@ -47,10 +47,12 @@ class Pdf2excel
 			line.each do |info|
 				# binding.pry
 				col_index = return_position(info.first)
+				col_index = 1 if col_index.nil?
 				info_str = info.last.strip! #takes away spaces to standardize patterns
 				if contains_words?(info_str) #check in order to prevent incorrect sanitization of dates 
 					# binding.pry
 					# puts info_str
+					# binding.pry
 					@mod_content[row_index][col_index] = info_str  
 				elsif contains_multiple_digits?(info_str) #true
 					# binding.pry
@@ -66,8 +68,8 @@ class Pdf2excel
 		return @mod_content
 	end
 
-	def transfer_to_excel
-		binding.pry
+	def transfer_to_excel #one workbook at a time
+		# binding.pry
 		wb_name = "PDF2EXCEL" + "#{Time.now.strftime("%m%d%Y %H%M")}" + ".xls"
 		workbook = WriteExcel.new(wb_name)
 		worksheet = workbook.add_worksheet
@@ -99,7 +101,6 @@ class Pdf2excel
 			num_of_col = info.count
 			@max = num_of_col if num_of_col > @max 
 		end
-		puts @max
 	end
 
 

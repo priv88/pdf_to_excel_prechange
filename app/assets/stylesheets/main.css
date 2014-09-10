@@ -13,3 +13,8 @@ body { padding-top: 70px;}
 	border: 2px solid;
 	padding: 25px;
 }
+
+.flash {
+	color: #007F3B;
+	font-weight: bold;
+}

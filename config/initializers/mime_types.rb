@@ -2,3 +2,5 @@
 
 # Add new mime types for use in respond_to blocks:
 # Mime::Type.register "text/richtext", :rtf
+
+# Mime::Type.regester "application/vnd.ms-excel", :xls

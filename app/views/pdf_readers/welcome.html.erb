@@ -2,11 +2,13 @@
 <div class="container">
 	<div class= "col-md-8 col-md-offset-2">
 		<div class= "col-md-offset-4">
-			<div><%=flash[:notice] %></div>
-			<strong>  
+			<strong>
 			PDF2Excel Reader
 			</strong>
-		</div>	
+		</div>
+		<div class="flash">
+			<%=sanitize(flash[:notice]) %>
+		</div>	  	
 		<br>
 		<div class="form-group">
 		<%= form_tag transform_path, multipart: true do %>
@@ -28,4 +30,6 @@
 			</strong>
 		</div>	
 	</div>
+
+	<
 </div>
