@@ -6,14 +6,14 @@ class PdfReadersController < ApplicationController
 
 	def transform
 		pdf_file = params[:pdf_file]
+		
 		page_start = params[:page_start]
 		page_end = params[:page_end]
 
 		pages = define_pages(page_start, page_end)
 		# binding.pry
 		pages.each do |page|
-			binding.pry
-			file = Pdf2excel.new(pdf_file,page)
+			file = Pdf2excel.new(pdf_file.path,page)
 			binding.pry
 			file.get_content
 			binding.pry
@@ -36,7 +36,7 @@ class PdfReadersController < ApplicationController
 		# binding.pry
 		pages = []
 		for page in page_start..page_end
-			pages << page
+			pages << page.to_i
 		end
 		return pages
 	end

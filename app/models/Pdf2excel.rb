@@ -7,7 +7,6 @@ class Pdf2excel
 
 	def initialize(file,page)
 		options = {:y_precision =>5}
-		binding.pry
 		@file = PDF::Reader::Turtletext.new(file, options)
 		@page = page
 	 #returns the precision required in y positions helps align text correctly which may visually appear on the same line but is off by a few pixels
@@ -20,13 +19,13 @@ class Pdf2excel
 	end
 
 	def get_content #returns positional text content collection as a hash [y_position, [[x_position, content]]]
-		@full_content = @file.content(page) #a[6][0] = yposition, a[6][1] = text content, a[6][1].count = # of parts in the line of text
+		@full_content = @file.content(@page) #a[6][0] = yposition, a[6][1] = text content, a[6][1].count = # of parts in the line of text
 		create_info_content #can only do this after full content is pulled
 		create_mod_content_structure
 	end
 
 	def get_precise_content #returns exact positional text content collection as a hash [y_position, [[x_position, content]]]
-		@file.precise_content(page) #does not merge lines based on y-position
+		@file.precise_content(@page) #does not merge lines based on y-position
 	end
 
 
@@ -68,6 +67,7 @@ class Pdf2excel
 	end
 
 	def transfer_to_excel
+		binding.pry
 		wb_name = "PDF2EXCEL" + "#{Time.now.strftime("%m%d%Y %H%M")}" + ".xls"
 		workbook = WriteExcel.new(wb_name)
 		worksheet = workbook.add_worksheet
