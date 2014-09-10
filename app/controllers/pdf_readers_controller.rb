@@ -18,6 +18,8 @@ class PdfReadersController < ApplicationController
 		page_start = params[:page_start]
 		page_end = params[:page_end]
 
+		page_end = page_start if page_end.nil?
+
 		pages = define_pages(page_start, page_end)
 		# binding.pry
 		# "#{Time.now.strftime("%m%d%Y %H%M")}"
