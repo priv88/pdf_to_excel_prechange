@@ -84,6 +84,8 @@ GEM
     multi_xml (0.5.5)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
+    nokogiri (1.6.3.1)
+      mini_portile (= 0.6.0)
     nokogiri (1.6.3.1-x64-mingw32)
       mini_portile (= 0.6.0)
     ntlm-http (0.1.1)
@@ -92,7 +94,12 @@ GEM
       ruby-rc4
     pdf-reader-turtletext (0.2.2)
       pdf-reader (= 1.1.1)
+    pg (0.17.1-x64-mingw32)
     polyglot (0.3.5)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     pry (0.10.1-x64-mingw32)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -183,6 +190,7 @@ DEPENDENCIES
   mechanize
   nokogiri
   pdf-reader-turtletext
+  pg
   pry
   pry-byebug
   rails (= 4.1.5)
