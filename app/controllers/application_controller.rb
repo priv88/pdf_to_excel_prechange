@@ -8,9 +8,10 @@ class ApplicationController < ActionController::Base
 
   def check_ip_address
     # puts request.env["REMOTE_ADDR"]
-    ip = request.env["REMOTE_ADDR"]
-    unless(WHITELIST.include? ip)
-      render :file => "#{Rails.public_path}/401.html", :status => :unauthorized
+    @ip = request.env["REMOTE_ADDR"]
+
+    unless(WHITELIST.include? @ip)
+      render :file => "#{Rails.public_path}/401.html", :status => :unauthorized, :notice => @ip
     end
     return
   end

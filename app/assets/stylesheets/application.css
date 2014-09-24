@@ -12,7 +12,6 @@
  *
 
  *= require_self
- *= require bootstrap_and_overrides
  *= require bootstrap.css
  *= require bootstrap_and_overrides.css
  *= require main.css
