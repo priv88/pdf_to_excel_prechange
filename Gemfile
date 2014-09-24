@@ -47,6 +47,8 @@ gem 'bootstrap_form'
 
 gem 'ipaddress'
 
+gem 'capybara'
+
 # gem 'carrierwave'
 
 
