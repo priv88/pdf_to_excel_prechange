@@ -30,6 +30,8 @@ GEM
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
     awesome_print (1.2.0)
+    bootstrap-sass (3.0.2.1)
+      sass (~> 3.2)
     bootstrap_form (2.1.1)
     builder (3.2.2)
     byebug (3.4.0)
@@ -191,6 +193,7 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
+  bootstrap-sass (= 3.0.2.1)
   bootstrap_form
   capybara
   coffee-rails (~> 4.0.0)

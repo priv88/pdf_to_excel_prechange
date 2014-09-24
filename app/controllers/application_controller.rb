@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :check_ip_address
 
-  WHITELIST = ['96.239.59.199','127.0.0.1']
+  WHITELIST = ['96.239.59.199','127.0.0.1','184.73.46.234']
 
   def check_ip_address
     # puts request.env["REMOTE_ADDR"]
