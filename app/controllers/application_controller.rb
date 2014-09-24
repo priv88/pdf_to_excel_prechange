@@ -4,11 +4,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :check_ip_address
 
-  WHITELIST = ['96.239.59.199','127.0.0.1','184.73.46.234']
+  WHITELIST = ['96.239.59.199','127.0.0.1','184.73.46.234','10.192.213.43']
 
   def check_ip_address
     # puts request.env["REMOTE_ADDR"]
-    @ip = request.env["REMOTE_ADDR"]
+    @ip = request.remote_ip
 
     unless(WHITELIST.include? @ip)
       render :file => "#{Rails.public_path}/401.html", :status => :unauthorized, :notice => @ip
