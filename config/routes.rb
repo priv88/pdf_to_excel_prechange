@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   post '/transform' => "pdf_readers#transform"
   get 'download_pdf_excel' => "pdf_readers#download_excel"
 
+  post '/find_bs_content' => "brightscope#find_bs_content"
+  get 'download_bs_excel' => "brightscope#download_excel"
   get 'brightscope' => 'brightscope#initiate'
 
   # The priority is based upon order of creation: first created -> highest priority.

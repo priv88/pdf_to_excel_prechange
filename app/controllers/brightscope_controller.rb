@@ -1,13 +1,21 @@
+require "capybara"
+require "csv"
+
 class BrightscopeController < ApplicationController
 
   def initiate
 
   end
 
-  def find_content
+  def find_bs_content
+
+
+
     session = Capybara::Session.new(:selenium)
     main_window = Brightscope.new(session)
     main_window.start_cache
+    main_window.use_sanitizer = false if params[:use_sanitizer] = false
+
     wb_name = "Brightscope" + ".xls"
     workbook = WriteExcel.new(wb_name)
     worksheet = workbook.add_worksheet
@@ -23,7 +31,7 @@ class BrightscopeController < ApplicationController
       file_name = url[index_url]
       puts file_name
       # main_window.name = sanitize_name(file_name)
-      main_window.name = file_name
+      main_window.name = main_window.user_sanitizer ? sanitizer_name(file_name) : file_name
       puts main_window.name
 
       main_window.locate_search_bar
