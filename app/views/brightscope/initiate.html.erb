@@ -1,0 +1,50 @@
+
+<div class="container">
+  <div class= "col-md-8 col-md-offset-2">
+    <div class= "col-md-offset-4">
+      <strong>
+      BrightScope 
+      </strong>
+    </div>
+    <div class="flash">
+      <%=sanitize(flash[:notice]) %>
+    </div>      
+    <br>
+    <div class="form-group">
+    <%= form_tag transform_path, multipart: true do %>
+      <label> Upload File - CSV Only </label> <%= file_field_tag :csv_file %>
+      <br>
+    
+      <%= check_box_tag 'use_sanitizer', false %>  <label> Check ONLY if you have the exact names from Brightscope to avoid using the sanitizer</label> 
+      
+      <br>
+    
+
+      <%= button_tag(type: "submit", class: "btn btn-primary") do %>
+        Submit
+      <% end %>
+    <%end %>
+    </div>
+
+
+    <div class= "row">
+      <strong style="color: #A70B32;">  
+      Please be patient. Don't be server-greedy - limit # of companies to 200 or less. Don't refresh unless you see an excel file or error. I'm hard at work!
+      </strong>
+    </div>
+
+    <br>
+
+    This is on a  best effort basis. Please review the companies not found on or incorrectly mapped in Brightscope via Brightscope or Privco websites and retry again. Common reasons why a company is not found are the following:
+
+    <ul> 
+      <li> 401K is based on parent's name </li>
+      <li> Our "official" name vs. Brightscope's are not similiar </li>
+      <li> Our "official" name includes a DBA or parentheses. i.e. "Subways (Doctor's Associate)" </li>
+      <li> Company is not based in the U.S. and does not offer 401K.</li>
+      <li> Brightscope search did not correctly return the sanitized name. (We strip off Inc, Corp, Ltd etc.. to standardize searches) </li>
+      <li> Our tool is not happy and needs a rest.</li>
+  </div>
+
+  <
+</div>

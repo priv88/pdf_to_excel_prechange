@@ -1,7 +1,6 @@
 class PdfReadersController < ApplicationController
 
-	def welcome
-
+	def initiate
 	end
 
 	def download_excel
@@ -13,36 +12,26 @@ class PdfReadersController < ApplicationController
 
 	def transform
 		pdf_file = params[:pdf_file]
-		
 		page_start = params[:page_start]
 		page_end = params[:page_end]
-
 		page_end = page_start if page_end.nil?
-
 		pages = define_pages(page_start, page_end)
-		# binding.pry
-		# "#{Time.now.strftime("%m%d%Y %H%M")}"
 		wb_name = "PDF2EXCEL" + ".xls"
 		workbook = WriteExcel.new(wb_name)
-		# binding.pry
 		pages.each do |page|
 			file = Pdf2excel.new(pdf_file.path,page)
 			worksheet = workbook.add_worksheet
 			file.get_content
 			file.set_col_position
-			# binding.pry
 			file.transform_content
-			# binding.pry
 			index = 0
 			file.mod_content.each do |info|
 				worksheet.write_row(index, 0, info)
 			index += 1
-			# binding.pry
 			end
-			# file.transfer_to_excel
 		end	
 		workbook.close
-		redirect_to :pdf2excel, notice: "Success! #{view_context.link_to('Download Excel', download_excel_path)}"
+		redirect_to :pdf2excel, notice: "Success at #{Time.now.strftime("%m%d%Y %H%M")}! #{view_context.link_to('Download Excel', download_pdf_excel_path)}"
 	end
 
 	private

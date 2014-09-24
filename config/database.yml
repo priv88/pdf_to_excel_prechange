@@ -10,6 +10,7 @@ development:
  database: <%= File.basename(Rails.root) %>_development
  pool: 5
  host: localhost
+ template: template0
 
 test:
  adapter: postgresql
@@ -17,9 +18,11 @@ test:
  database: <%= File.basename(Rails.root) %>_test
  pool: 5
  host: localhost
+ template: template0
 
 production:
  adapter: postgresql
  encoding: unicode
  database: <%= File.basename(Rails.root) %>_production
  pool: 5
+ template: template0

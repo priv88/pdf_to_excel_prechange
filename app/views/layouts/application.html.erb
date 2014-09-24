@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>PdfReader</title>
+  <title>PrivCo Internal Tools</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<nav class="navbar navbar-default navbar-fixed-top " role="navigation">
-  <div class="navbar-brand custom" style="color:#F1ECDC">
-    PrivCo Internal Tools
-  </div>
-</nav>
+  <nav class="navbar navbar-default navbar-fixed-top " role="navigation">
+    <div class="container-fluid" >
+    	<div class="navbar-header page-scroll">
+        <div class="navbar-brand custom" style="color:#F1ECDC">
+    	    PrivCo Internal Tools
+    	  </div>
+      </div>
+        <div class="collapse navbar-collapse ">
+          <ul class="nav navbar-nav custom">
+            <li class="active"> <%=link_to 'PDF2Excel', pdf2excel_path, class: "link" %> </li>
+            <li class="active"> <%=link_to 'BrightScope', brightscope_path, class: "link" %>  </li>
+          </ul>
+        </div>
+
+
+    </div> 
+  </nav>
 
 
 <%= yield %>

@@ -51,17 +51,11 @@ class Pdf2excel
 				info_str = info.last.strip! #takes away spaces to standardize patterns
 				info_str = info.last if info_str.nil?
 				if contains_words?(info_str) #check in order to prevent incorrect sanitization of dates 
-					# binding.pry
-					# puts info_str
-					# binding.pry
 					@mod_content[row_index][col_index] = info_str  
 				elsif contains_multiple_digits?(info_str) #true
-					# binding.pry
 					new_info_arr = sanitize(info_str) #returns_arry ["232", "3232", "(4242)"]
 					separate_info(new_info_arr, row_index, col_index)
-					# binding.pry
 				else #all other cases (i.e single digits)
-					# binding.pry
 					@mod_content[row_index][col_index] = info_str
 				end
 			end

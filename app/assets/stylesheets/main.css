@@ -1,13 +1,12 @@
+@import 'bootstrap';
+
 body { padding-top: 70px;}
 
-.navbar { 
-	background-color: #0C49BF;
-	
+a.link {
+    background-color: #0C49BF;
+    color: #F1ECDC;
 }
 
-.custom {
-	color: #F1ECDC;
-}
 
 .container {
 	border: 2px solid;
