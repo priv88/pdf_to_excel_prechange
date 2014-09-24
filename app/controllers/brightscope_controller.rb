@@ -1,6 +1,3 @@
-require "capybara"
-require "csv"
-
 class BrightscopeController < ApplicationController
 
   def initiate
