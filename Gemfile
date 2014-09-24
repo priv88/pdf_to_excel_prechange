@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 gem 'writeexcel'
 
-gem 'bootstrap-sass', '3.0.2.1'
+# gem 'bootstrap-sass', '3.0.2.1'
 
 gem 'pry-byebug'
 

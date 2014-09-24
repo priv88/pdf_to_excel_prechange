@@ -30,9 +30,7 @@ GEM
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
     awesome_print (1.2.0)
-    bootstrap-sass (3.0.2.1)
-      sass (~> 3.2)
-    bootstrap_form (2.1.1)
+    bootstrap_form (2.2.0)
     builder (3.2.2)
     byebug (3.4.0)
       columnize (~> 0.8)
@@ -93,8 +91,6 @@ GEM
     multi_xml (0.5.5)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
-    nokogiri (1.6.3.1)
-      mini_portile (= 0.6.0)
     nokogiri (1.6.3.1-x64-mingw32)
       mini_portile (= 0.6.0)
     ntlm-http (0.1.1)
@@ -103,13 +99,8 @@ GEM
       ruby-rc4
     pdf-reader-turtletext (0.2.2)
       pdf-reader (= 1.1.1)
-    pg (0.17.1)
     pg (0.17.1-x64-mingw32)
     polyglot (0.3.5)
-    pry (0.10.1)
-      coderay (~> 1.1.0)
-      method_source (~> 0.8.1)
-      slop (~> 3.4)
     pry (0.10.1-x64-mingw32)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -137,7 +128,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (10.3.2)
-    rdoc (4.1.1)
+    rdoc (4.1.2)
       json (~> 1.4)
     ruby-rc4 (0.1.5)
     sass (3.2.19)
@@ -193,7 +184,6 @@ PLATFORMS
 
 DEPENDENCIES
   awesome_print
-  bootstrap-sass (= 3.0.2.1)
   bootstrap_form
   capybara
   coffee-rails (~> 4.0.0)
