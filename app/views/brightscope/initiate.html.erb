@@ -10,9 +10,12 @@
       <%=sanitize(flash[:notice]) %>
     </div>      
     <br>
+
     <div class="form-group">
-    <%= form_tag transform_path, multipart: true do %>
-      <label> Upload File - CSV Only </label> <%= file_field_tag :csv_file %>
+    <%= form_tag '/find_bs_content', multipart: true do %>
+      <label> Upload File - CSV Only (2 Columns)</label>
+      <label> [Column 1: PrivCo Name | Column 2: Search Name] [Subway's (Doctor Associates) | Doctor Associates]  </label> 
+        <%= file_field_tag :csv_file %>
       <br>
     
       <%= check_box_tag 'use_sanitizer', false %>  <label> Check ONLY if you have the exact names from Brightscope to avoid using the sanitizer</label> 
@@ -26,10 +29,14 @@
     <%end %>
     </div>
 
+    <div class="row">
+      <img src="/assets/BS_Example.png"/>
+    </div>
+    <br>
 
-    <div class= "row">
+    <div class="row">
       <strong style="color: #A70B32;">  
-      Please be patient. Don't be server-greedy - limit # of companies to 200 or less. Don't refresh unless you see an excel file or error. I'm hard at work!
+      Please be patient. Don't be server-greedy - limit # of companies to 100 or less. This will help you locate problematic companies. Don't refresh unless you see an excel file or error. I'm hard at work!
       </strong>
     </div>
 

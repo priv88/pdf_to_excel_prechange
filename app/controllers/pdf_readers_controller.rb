@@ -31,7 +31,7 @@ class PdfReadersController < ApplicationController
 			end
 		end	
 		workbook.close
-		redirect_to :pdf2excel, notice: "Success at #{Time.now.strftime("%m%d%Y %H%M")}! #{view_context.link_to('Download Excel', download_pdf_excel_path)}"
+		redirect_to :pdf2excel, notice: "Success at #{Time.now.strftime("%m%-d%Y %H:%M")}! #{view_context.link_to('Download Excel', download_pdf_excel_path)}"
 	end
 
 	private

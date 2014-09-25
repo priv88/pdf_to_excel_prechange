@@ -16,7 +16,7 @@ require "csv"
 
 class Brightscope
 
-attr_accessor :name, :content, :content_401k, :header, :session, :web_name, :search_bar, :industry, :skip
+attr_accessor :name, :content, :content_401k, :header, :session, :web_name, :search_bar, :industry, :skip, :use_sanitizer
 BRIGHTSCOPE_URL = "http://www.brightscope.com"
 
   def initialize(session)

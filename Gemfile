@@ -51,6 +51,7 @@ gem 'ipaddress'
 
 gem 'capybara'
 
+gem 'selenium-webdriver'
 # gem 'carrierwave'
 
 
