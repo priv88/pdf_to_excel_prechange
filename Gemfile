@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.5'
+gem 'certified'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 # Use SCSS for stylesheets
@@ -31,6 +32,7 @@ gem 'writeexcel'
 
 gem 'pry-byebug'
 
+# gem 'pdf-reader', '~> 1.3.3'
 gem 'pdf-reader-turtletext'
 
 gem 'pry'
@@ -52,6 +54,16 @@ gem 'ipaddress'
 gem 'capybara'
 
 gem 'selenium-webdriver'
+
+gem 'dotenv-rails', :groups => [:development, :test]
+
+gem 'easy_translate'
+
+gem 'afm'
+
+gem 'ttfunk'
+
+gem 'hashery'
 # gem 'carrierwave'
 
 

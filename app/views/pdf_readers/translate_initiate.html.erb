@@ -1,0 +1,40 @@
+<div class="container">
+  <div class= "col-md-8 col-md-offset-2">
+    <div class= "col-md-offset-4">
+      <strong>
+      PDF2Excel Reader - Translation Services
+      </strong>
+    </div>
+    <div class="flash">
+      <%=sanitize(flash[:notice]) %>
+    </div>      
+    <br>
+    <div class="form-group">
+    <%= form_tag translate_path, multipart: true do %>
+      <label> Upload File - PDF only </label> <%= file_field_tag :pdf_file %>
+      <br>
+      <div class ="row" style="color: #A70B32;"> 
+        <strong>Do NOT use this tool to translate pages with many paragraphs of text. Do NOT be greedy with our quota. This tool is STRICTLY for foreign financials (income, balance sheets, and cash flow statements). </strong>
+      </div>
+      <br>
+      <label> Language </label> <%= select_tag :language, options_for_select(language_choices), :class => "form-control" %>
+      <br> 
+
+      <label> Page Start </label> <%= number_field_tag :page_start, class: "form-control" %>
+      <label> Page End </label> <%= number_field_tag :page_end, :class => "form-control" %>
+
+      <br> </br>
+
+
+      <%= button_tag(type: "submit", class: "btn btn-primary") do %>
+        Submit
+      <% end %>
+    <%end %>
+    </div>
+    <div class= "row">
+      <strong style="color: #A70B32;">  
+      The quality of PDF files are not standardized, please review the excel output closely before use.
+      </strong>
+    </div>  
+  </div>
+</div>

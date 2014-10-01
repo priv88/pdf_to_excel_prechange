@@ -2,8 +2,13 @@ Rails.application.routes.draw do
 
   root 'pdf_readers#initiate'
   get 'pdf2excel' => 'pdf_readers#initiate'
+  get 'pdf2excel_translate' => 'pdf_readers#translate_initiate'
+
   post '/transform' => "pdf_readers#transform"
+  post '/translate' => "pdf_readers#translate"
+
   get 'download_pdf_excel' => "pdf_readers#download_excel"
+  get '/download_pdf_excel_translate' => 'pdf_readers#download_excel_translate'  
 
   post '/find_bs_content' => "brightscope#find_bs_content"
   get 'download_bs_excel' => "brightscope#download_excel"

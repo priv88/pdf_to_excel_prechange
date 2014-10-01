@@ -1,15 +1,38 @@
 class PdfReadersController < ApplicationController
-
+	
 	def initiate
 	end
 
-	def download_excel
-		require 'open-uri'
-		file_path = "#{Rails.root}/PDF2EXCEL.xls"
-		send_file file_path, :filename => "PDF2EXCEL.xls", :disposition => 'attachment'	
+	def translate_initiate
 	end
 
+	def translate
+		language = params[:language]
+		pdf_file = params[:pdf_file]
+		page_start = params[:page_start]
+		page_end = params[:page_end]
+		page_end = page_start if page_end.nil?
+		pages = define_pages(page_start, page_end)
 
+		wb_name = "PDF2EXCEL - Translate" + ".xls"
+		workbook = WriteExcel.new(wb_name)
+		pages.each do |page|
+			file = Pdf2excel.new(pdf_file.path,page)
+			# binding.pry
+			worksheet = workbook.add_worksheet
+			file.get_content
+			file.set_col_position
+			file.transform_content_translation(language)
+			index = 0
+			file.mod_content.each do |info|
+				worksheet.write_row(index, 0, info)
+			index += 1
+			end
+		end	
+		workbook.close
+		redirect_to :pdf2excel_translate, notice: "Success at #{Time.now.strftime("%m-%d-%y at %H:%M")}! #{view_context.link_to('Download Excel', download_pdf_excel_translate_path)}"
+	end
+	
 	def transform
 		pdf_file = params[:pdf_file]
 		page_start = params[:page_start]
@@ -31,7 +54,19 @@ class PdfReadersController < ApplicationController
 			end
 		end	
 		workbook.close
-		redirect_to :pdf2excel, notice: "Success at #{Time.now.strftime("%m%-d%Y %H:%M")}! #{view_context.link_to('Download Excel', download_pdf_excel_path)}"
+		redirect_to :pdf2excel, notice: "Success at #{Time.now.strftime("%m-%d-%y at %H:%M")}! #{view_context.link_to('Download Excel', download_pdf_excel_path)}"
+	end
+
+	def download_excel
+		require 'open-uri'
+		file_path = "#{Rails.root}/PDF2EXCEL.xls"
+		send_file file_path, :filename => "PDF2EXCEL.xls", :disposition => 'attachment'	
+	end
+
+	def download_excel_translate
+		require 'open-uri'
+		file_path = "#{Rails.root}/PDF2EXCEL - Translate.xls"
+		send_file file_path, :filename => "PDF2EXCEL - Translate.xls", :disposition => 'attachment'	
 	end
 
 	private

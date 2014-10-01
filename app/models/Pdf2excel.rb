@@ -1,12 +1,14 @@
 require 'pdf-reader-turtletext'
 require 'writeexcel'
+require 'easy_translate'
 
 class Pdf2excel
-	attr_accessor :file, :page, :full_content, :info_content, :mod_content, :y_precision, :col_position, :max
+	attr_accessor :file, :page, :full_content, :info_content, :mod_content, :y_precision, :col_position, :max, :language
 
 
 	def initialize(file,page)
 		options = {:y_precision =>7}
+		@orig_file = PDF::Reader.new(file)
 		@file = PDF::Reader::Turtletext.new(file, options)
 		@page = page
 	 #returns the precision required in y positions helps align text correctly which may visually appear on the same line but is off by a few pixels
@@ -19,6 +21,8 @@ class Pdf2excel
 	end
 
 	def get_content #returns positional text content collection as a hash [y_position, [[x_position, content]]]
+		binding.pry
+		@orig_file
 		@full_content = @file.content(@page) #a[6][0] = yposition, a[6][1] = text content, a[6][1].count = # of parts in the line of text
 		create_info_content #can only do this after full content is pulled
 		create_mod_content_structure
@@ -43,7 +47,6 @@ class Pdf2excel
 
 	def transform_content
 		@info_content.each_with_index do |line, row_index| 
-			binding.pry
 			line.each do |info|
 				# binding.pry
 				col_index = return_position(info.first)
@@ -62,6 +65,32 @@ class Pdf2excel
 		end
 		return @mod_content
 	end
+
+	def transform_content_translation(language)
+		EasyTranslate.api_key = ENV['GOOGLE_KEY']
+		
+		@info_content.each_with_index do |line, row_index| 
+			line.each do |info|
+				col_index = return_position(info.first)
+				col_index = 1 if col_index.nil?
+				info_str = info.last.strip! #takes away spaces to standardize patterns
+				info_str = info.last if info_str.nil?
+				binding.pry
+				if contains_words?(info_str) #check in order to prevent incorrect sanitization of dates 
+					info_str = EasyTranslate.translate(info_str, :from => language.to_sym, :to => :en )
+					@mod_content[row_index][col_index] = info_str  
+				elsif contains_multiple_digits?(info_str) #true
+					new_info_arr = EasyTranslate.translate(sanitize(info_str), :from => language.to_sym, :to => :en) #returns_arry ["232", "3232", "(4242)"]
+					separate_info(new_info_arr, row_index, col_index)
+				else #all other cases (i.e single digits)
+					info_str = EasyTranslate.translate(info_str, :from => language.to_sym, :to => :en )
+					@mod_content[row_index][col_index] = info_str
+				end
+			end
+		end
+		return @mod_content
+	end
+
 
 	def transfer_to_excel #one workbook at a time
 		# binding.pry
@@ -163,6 +192,9 @@ class Pdf2excel
 		@col_position = new_col
 	end
 
+	def translation_services(string)
+
+	end
 
 end
 

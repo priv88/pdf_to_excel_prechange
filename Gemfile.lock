@@ -28,11 +28,12 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    afm (0.2.2)
     arel (5.0.1.20140414130214)
     awesome_print (1.2.0)
     bootstrap_form (2.2.0)
     builder (3.2.2)
-    byebug (3.4.0)
+    byebug (3.5.1)
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
       slop (~> 3.6)
@@ -42,7 +43,8 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
-    childprocess (0.5.3)
+    certified (1.0.0)
+    childprocess (0.5.4)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -56,9 +58,20 @@ GEM
     debugger-linecache (1.2.0)
     domain_name (0.5.21)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (0.11.1)
+      dotenv-deployment (~> 0.0.2)
+    dotenv-deployment (0.0.2)
+    dotenv-rails (0.11.1)
+      dotenv (= 0.11.1)
+    easy_translate (0.5.0)
+      json
+      thread
+      thread_safe
     erubis (2.7.0)
     execjs (2.2.1)
-    ffi (1.9.3-x64-mingw32)
+    ffi (1.9.5)
+    ffi (1.9.5-x64-mingw32)
+    hashery (2.1.1)
     hike (1.2.3)
     http-cookie (1.0.2)
       domain_name (~> 0.5)
@@ -89,11 +102,13 @@ GEM
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.6.0)
-    minitest (5.4.1)
+    minitest (5.4.2)
     multi_json (1.10.1)
     multi_xml (0.5.5)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
+    nokogiri (1.6.3.1)
+      mini_portile (= 0.6.0)
     nokogiri (1.6.3.1-x64-mingw32)
       mini_portile (= 0.6.0)
     ntlm-http (0.1.1)
@@ -102,8 +117,13 @@ GEM
       ruby-rc4
     pdf-reader-turtletext (0.2.2)
       pdf-reader (= 1.1.1)
+    pg (0.17.1)
     pg (0.17.1-x64-mingw32)
     polyglot (0.3.5)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
     pry (0.10.1-x64-mingw32)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -160,11 +180,13 @@ GEM
       activesupport (>= 3.0)
       sprockets (~> 2.8)
     thor (0.19.1)
+    thread (0.1.4)
     thread_safe (0.3.4)
     tilt (1.4.1)
     treetop (1.4.15)
       polyglot
       polyglot (>= 0.3.1)
+    ttfunk (1.4.0)
     turbolinks (2.3.0)
       coffee-rails
     twitter-bootstrap-rails (3.2.0)
@@ -174,7 +196,7 @@ GEM
       railties (~> 4.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    tzinfo-data (1.2014.7)
+    tzinfo-data (1.2014.8)
       tzinfo (>= 1.0.0)
     uglifier (2.5.3)
       execjs (>= 0.3.0)
@@ -183,7 +205,7 @@ GEM
       unf_ext
     unf_ext (0.0.6)
     webrobots (0.1.1)
-    websocket (1.0.7)
+    websocket (1.2.1)
     win32console (1.3.2)
     writeexcel (1.0.4)
     xpath (2.0.0)
@@ -193,11 +215,16 @@ PLATFORMS
   x64-mingw32
 
 DEPENDENCIES
+  afm
   awesome_print
   bootstrap_form
   capybara
+  certified
   coffee-rails (~> 4.0.0)
+  dotenv-rails
+  easy_translate
   execjs
+  hashery
   httparty
   ipaddress
   jbuilder (~> 2.0)
@@ -212,6 +239,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
   selenium-webdriver
+  ttfunk
   turbolinks
   twitter-bootstrap-rails
   tzinfo-data

@@ -40,22 +40,30 @@ class BrightscopeController < ApplicationController
       main_window.locate_search_bar
 
       main_window.input_and_select
-      # binding.pry
       unless main_window.skip
-        # binding.pry
         main_window.set_identifiers #basic form
-        main_window.redirect_to_form5500 #Form 5500
-        click_down = main_window.count_years #switch years
-        # binding.pry
-        click_down.times do 
-          main_window.set_401k_identifiers
-          row = [privco_name, file_name]
-          create_row(main_window.content, main_window.content_401k, row)
-          main_window.clear_401k_content
-          main_window.click_through_years
-          worksheet.write_row(index,0,row)
+        if main_window.content.count < 1
+          worksheet.write_row(index,0,[privco_name, file_name,"Not found in Brightscope"])
           index += 1
-          sleep rand(4..7)
+          row.clear  
+        else
+          puts main_window.content
+          main_window.redirect_to_form5500 #Form 5500
+          sleep 2
+          click_down = main_window.count_years #switch years
+          puts click_down
+          click_down.times do 
+            sleep 1
+            main_window.set_401k_identifiers
+            row = [privco_name, file_name]
+            create_row(main_window.content, main_window.content_401k, row)
+            main_window.clear_401k_content
+            main_window.click_through_years
+            puts row
+            worksheet.write_row(index,0,row)
+            index += 1
+            sleep rand(4..7)
+          end
         end
       else
         worksheet.write_row(index,0,[privco_name, file_name,"Not found in Brightscope"])
@@ -73,7 +81,7 @@ class BrightscopeController < ApplicationController
     end
         # binding.pry
     workbook.close    
-    redirect_to :brightscope, notice: "Success on #{Time.now.strftime("%m-%d%Y %H:%M")} ! #{view_context.link_to('Download Excel', download_bs_excel_path)}"
+    redirect_to :brightscope, notice: "Success on #{Time.now.strftime("%m-%d-%y at %H:%M")} ! #{view_context.link_to('Download Excel', download_bs_excel_path)}"
   end
 
   def download_excel

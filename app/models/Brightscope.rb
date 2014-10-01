@@ -43,6 +43,7 @@ BRIGHTSCOPE_URL = "http://www.brightscope.com"
     @search_bar.set(@name)
      #sleep to wait for dropdown to populate, not good way to verify
     @search_bar.native.send_keys :arrow_down
+    # @search_bar.native.send_keys :arrow_down
     sleep 5
 
     unless @session.all(:xpath, '//div[contains(@class, "sitewide-searchbar-dropdown")]').empty?
@@ -54,31 +55,30 @@ BRIGHTSCOPE_URL = "http://www.brightscope.com"
 
 
   def set_identifiers #basic_form_page - pick up basic information
-    web_name = @session.all(".cname")[0].text
-    puts web_name
-    industry = @session.all('.selected-details tbody tr:nth-child(2) td')[1].text
-    puts industry
-    address = @session.evaluate_script("document.getElementsByClassName('selected-detail-val')[0].innerHTML")
+    unless @session.first(".cname").nil?
+      web_name = @session.first(".cname").text 
+      puts web_name
+      industry = @session.all('.selected-details tbody tr:nth-child(2) td')[1].text
+      puts industry
+      address = @session.evaluate_script("document.getElementsByClassName('selected-detail-val')[0].innerHTML")
 
-    # binding.pry
-    unless address.include? "None"
-      sanitized_address = sanitize_address(address)
-      address_1 = sanitized_address[0]
-      address_2 = sanitized_address[1]
-      city = sanitized_address[2]
-      state = sanitized_address[3]
-      zip_code = sanitized_address[4]
-      @content.push(web_name, industry, address_1, address_2, city, state, zip_code) 
-    else
-      @content.push(web_name, industry, "Address Not Available", "", "", "", "") 
+      # binding.pry
+      unless address.include? "None"
+        sanitized_address = sanitize_address(address)
+        address_1 = sanitized_address[0]
+        address_2 = sanitized_address[1]
+        city = sanitized_address[2]
+        state = sanitized_address[3]
+        zip_code = sanitized_address[4]
+        @content.push(web_name, industry, address_1, address_2, city, state, zip_code) 
+      else
+        @content.push(web_name, industry, "Address Not Available", "", "", "", "") 
+      end
     end
     # binding.pry
     @content
     # address = @session.all('.selected-details tbody tr:nth-child(1) td').empty? ? "N/A" : @session.all('.selected-details tbody tr:nth-child(1) td')[1].text
     # puts address
-
-
-    puts @content
   end
 
   def set_401k_identifiers #form 5500 info
