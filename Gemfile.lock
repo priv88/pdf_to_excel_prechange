@@ -58,11 +58,9 @@ GEM
     debugger-linecache (1.2.0)
     domain_name (0.5.21)
       unf (>= 0.0.5, < 1.0.0)
-    dotenv (0.11.1)
-      dotenv-deployment (~> 0.0.2)
-    dotenv-deployment (0.0.2)
-    dotenv-rails (0.11.1)
-      dotenv (= 0.11.1)
+    dotenv (1.0.0)
+    dotenv-rails (1.0.0)
+      dotenv (= 1.0.0)
     easy_translate (0.5.0)
       json
       thread
