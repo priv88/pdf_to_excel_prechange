@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_action :check_ip_address
+  before_action :enforce_utf8
 
   WHITELIST = ['96.239.59.199','127.0.0.1','184.73.46.234','10.192.213.43']
 

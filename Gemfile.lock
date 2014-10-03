@@ -44,7 +44,7 @@ GEM
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
     certified (1.0.0)
-    childprocess (0.5.4)
+    childprocess (0.5.5)
       ffi (~> 1.0, >= 1.0.11)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -69,7 +69,6 @@ GEM
       thread_safe
     erubis (2.7.0)
     execjs (2.2.1)
-    ffi (1.9.5)
     ffi (1.9.5-x64-mingw32)
     hashery (2.1.1)
     hike (1.2.3)
@@ -107,8 +106,6 @@ GEM
     multi_xml (0.5.5)
     net-http-digest_auth (1.4)
     net-http-persistent (2.9.4)
-    nokogiri (1.6.3.1)
-      mini_portile (= 0.6.0)
     nokogiri (1.6.3.1-x64-mingw32)
       mini_portile (= 0.6.0)
     ntlm-http (0.1.1)
@@ -117,13 +114,8 @@ GEM
       ruby-rc4
     pdf-reader-turtletext (0.2.2)
       pdf-reader (= 1.1.1)
-    pg (0.17.1)
     pg (0.17.1-x64-mingw32)
     polyglot (0.3.5)
-    pry (0.10.1)
-      coderay (~> 1.1.0)
-      method_source (~> 0.8.1)
-      slop (~> 3.4)
     pry (0.10.1-x64-mingw32)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -187,7 +179,7 @@ GEM
       polyglot
       polyglot (>= 0.3.1)
     ttfunk (1.4.0)
-    turbolinks (2.3.0)
+    turbolinks (2.4.0)
       coffee-rails
     twitter-bootstrap-rails (3.2.0)
       actionpack (~> 4.1)

@@ -21,7 +21,7 @@ class Pdf2excel
 	end
 
 	def get_content #returns positional text content collection as a hash [y_position, [[x_position, content]]]
-		binding.pry
+		# binding.pry
 		@orig_file
 		@full_content = @file.content(@page) #a[6][0] = yposition, a[6][1] = text content, a[6][1].count = # of parts in the line of text
 		create_info_content #can only do this after full content is pulled
@@ -75,7 +75,7 @@ class Pdf2excel
 				col_index = 1 if col_index.nil?
 				info_str = info.last.strip! #takes away spaces to standardize patterns
 				info_str = info.last if info_str.nil?
-				binding.pry
+				# binding.pry
 				if contains_words?(info_str) #check in order to prevent incorrect sanitization of dates 
 					info_str = EasyTranslate.translate(info_str, :from => language.to_sym, :to => :en )
 					@mod_content[row_index][col_index] = info_str  
@@ -122,6 +122,7 @@ class Pdf2excel
 	def set_max
 		@max = 1
 		@info_content.each do |info|
+			# binding.pry
 			num_of_col = info.count
 			@max = num_of_col if num_of_col > @max 
 		end
@@ -134,7 +135,7 @@ class Pdf2excel
 	end #private
 
 	def contains_words?(info_str)
-		regex = /[a-zA-Z]{2,}/ #words more than 2 letters - in order to prevent sanitization of dates.
+		regex = /\w{2,}/ #words more than 2 letters - in order to prevent sanitization of dates.
 		(info_str =~ regex) == nil ? false : true #if it is nil then return false (does not contain words) 
 	end #private
 
@@ -192,9 +193,6 @@ class Pdf2excel
 		@col_position = new_col
 	end
 
-	def translation_services(string)
-
-	end
 
 end
 
